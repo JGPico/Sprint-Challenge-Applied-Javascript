@@ -46,16 +46,18 @@ function createCard(obj) {
 
 const cardEntry = document.querySelector('.cards-container');
 
-let testObj = {headline: "ES8: The Next Step in the Evolution of Javascript and What it Means For Your Projects", authorPhoto: "./assets/sir.jpg", authorName: "SIR RUFF'N'STUFF"};
 
-cardEntry.append(createCard(testObj));
+axios.get('https://lambda-times-backend.herokuapp.com/articles').then(response => {
+    console.log(response);
+    Object.values(response.data.articles).forEach(element => {
+        element.forEach(item => {
+            cardEntry.append(createCard(item));
+        })
+    })
+    // response.data.articles.javascript.forEach(element => {
+    //     cardEntry.append(createCard(element));
+    // })
 
-console.log('This is the testObj ', testObj);
-
-
-// axios.get('https://lambda-times-backend.herokuapp.com/articles').then(response => {
-//     console.log(response);
-
-// }).catch(error => {
-//     console.log('Shit has hit the card fan', error);
-// })
+}).catch(error => {
+    console.log('Shit has hit the card fan', error);
+})
