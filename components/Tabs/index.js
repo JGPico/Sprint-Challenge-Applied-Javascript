@@ -21,7 +21,7 @@ function createTabs(obj){
 const tabsEntry = document.querySelector('.topics');
 
 axios.get('https://lambda-times-backend.herokuapp.com/topics').then(response => {
-    console.log(response);
+    //console.log(response);
     response.data.topics.forEach(element => {
         tabsEntry.append(createTabs(element));
     })
