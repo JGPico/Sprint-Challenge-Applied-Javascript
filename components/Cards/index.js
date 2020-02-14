@@ -48,16 +48,15 @@ const cardEntry = document.querySelector('.cards-container');
 
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles').then(response => {
-    console.log(response);
+    
+    //console.log(response);
+
     Object.values(response.data.articles).forEach(element => {
         element.forEach(item => {
             cardEntry.append(createCard(item));
         })
     })
-    // response.data.articles.javascript.forEach(element => {
-    //     cardEntry.append(createCard(element));
-    // })
-
+    
 }).catch(error => {
     console.log('Shit has hit the card fan', error);
 })
